@@ -1,0 +1,997 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Conecte.ai",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/customer": {
+            "get": {
+                "tags": [
+                    "CustomerController"
+                ],
+                "summary": "Lista os clientes cadastrados.",
+                "description": "Lista os clientes cadastrados no banco de dados.",
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "$customer"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "CustomerController"
+                ],
+                "summary": "Atualiza um cliente.",
+                "description": "Atualiza um novo cliente no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Felipe Kazuo"
+                    },
+                    {
+                        "name": "cnpj",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "99.999.999/9999-99"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "03/03/2021"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "email@domain.com"
+                    },
+                    {
+                        "name": "telephone",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "(99) 99999-9999"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao atualizar cliente."
+                                ]
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente atualizado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CustomerController"
+                ],
+                "summary": "Cadastra um cliente.",
+                "description": "Cadastra um novo cliente no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Felipe Kazuo"
+                    },
+                    {
+                        "name": "cnpj",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "99.999.999/9999-99"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "03/03/2021"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "email@domain.com"
+                    },
+                    {
+                        "name": "telephone",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "(99) 99999-9999"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao cadastrar cliente."
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao cadastrar cliente."
+                                ]
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente efetuado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customer/{id}": {
+            "get": {
+                "tags": [
+                    "CustomerController"
+                ],
+                "summary": "Mostra um cliente cadastrado.",
+                "description": "Mostra um cliente cadastrado no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "$id"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "CustomerController"
+                ],
+                "summary": "Deleta um cliente.",
+                "description": "Deleta um cliente existente no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao deletar cliente."
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente deletado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/order": {
+            "get": {
+                "tags": [
+                    "OrderController"
+                ],
+                "summary": "Lista os pedidos cadastrados.",
+                "description": "Lista os pedidos cadastrados no banco de dados.",
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "$order"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "OrderController"
+                ],
+                "summary": "Cria um pedido.",
+                "description": "Cria um novo pedido no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "salesman",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Felipe Kazuo"
+                    },
+                    {
+                        "name": "customer_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "03/03/2021"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Pendente"
+                    },
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "total_price",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "100"
+                    },
+                    {
+                        "name": "commission",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2.5"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao cadastrar pedido."
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao criar pedido."
+                                ]
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Pedido efetuado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/order/{id}": {
+            "get": {
+                "tags": [
+                    "OrderController"
+                ],
+                "summary": "Mostra um pedido cadastrado.",
+                "description": "Mostra um pedido cadastrado no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Pedido não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "$id"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "OrderController"
+                ],
+                "summary": "Atualiza um pedido.",
+                "description": "Atualiza um pedido existente no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "salesman",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Felipe Kazuo"
+                    },
+                    {
+                        "name": "cusomer_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "03/03/2021"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Pago"
+                    },
+                    {
+                        "name": "product_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "name": "total_price",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "100"
+                    },
+                    {
+                        "name": "commission",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2.5"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao atualizar pedido."
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Cliente não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Pedido atualizado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "OrderController"
+                ],
+                "summary": "Deleta um pedido.",
+                "description": "Deleta um pedido existente no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao deletar pedido."
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Pedido não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Pedido deletado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/product": {
+            "get": {
+                "tags": [
+                    "ProductController"
+                ],
+                "summary": "Lista os produtos cadastrados.",
+                "description": "Lista os produtos cadastrados no banco de dados.",
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "$product"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProductController"
+                ],
+                "summary": "Atualiza um produto.",
+                "description": "Atualiza um novo produto no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Galao de tinta"
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Azul"
+                    },
+                    {
+                        "name": "dimensions",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "5 litros"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "20"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao atualizar produto."
+                                ]
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Produto atualizado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ProductController"
+                ],
+                "summary": "Cadastra um produto.",
+                "description": "Cadastra um novo produto no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Galao de tinta"
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "Azul"
+                    },
+                    {
+                        "name": "dimensions",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "5 litros"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "20"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao criar produto."
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao criar produto."
+                                ]
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Produto criado efetuado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/product/{id}": {
+            "get": {
+                "tags": [
+                    "ProductController"
+                ],
+                "summary": "Mostra um produto cadastrado.",
+                "description": "Mostra um produto cadastrado no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Produto não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "$id"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ProductController"
+                ],
+                "summary": "Deleta um produto.",
+                "description": "Deleta um produto existente no banco de dados.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Erro ao deletar produto."
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Produto não encontrado."
+                                ]
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Successful Operation",
+                        "content": {
+                            "application/json": {
+                                "example": [
+                                    "Produto deletado com sucesso."
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Customer": {
+                "title": "Customer",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Nome do cliente",
+                        "format": "string",
+                        "example": "Felipe Kazuo"
+                    },
+                    "cnpj": {
+                        "title": "cnpj",
+                        "description": "CNPJ do cliente",
+                        "format": "string",
+                        "example": "99.999.999/9999-99"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "E-mail do cliente",
+                        "format": "string",
+                        "example": "email@domain.com"
+                    },
+                    "telephone": {
+                        "title": "telephone",
+                        "description": "Telefone do cliente",
+                        "format": "string",
+                        "example": "(99) 99999-9999"
+                    }
+                },
+                "type": "object"
+            },
+            "Order": {
+                "title": "Order",
+                "properties": {
+                    "salesman": {
+                        "title": "salesman",
+                        "description": "Nome do vendedor",
+                        "format": "string",
+                        "example": "Felipe Kazuo"
+                    },
+                    "customer_id": {
+                        "title": "customer_id",
+                        "description": "ID do cliente",
+                        "format": "string",
+                        "example": "1"
+                    },
+                    "date": {
+                        "title": "date",
+                        "description": "Data do pedido",
+                        "format": "string",
+                        "example": "2021/03/03"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "Status do pedido",
+                        "format": "string",
+                        "example": "Pendente"
+                    },
+                    "product_id": {
+                        "title": "product_id",
+                        "description": "ID do produto",
+                        "format": "string",
+                        "example": "1"
+                    },
+                    "total_price": {
+                        "title": "total_price",
+                        "description": "Preco total do pedido",
+                        "format": "string",
+                        "example": "100"
+                    },
+                    "commission": {
+                        "title": "commission",
+                        "description": "Comissao do vendedor",
+                        "format": "string",
+                        "example": "2.5"
+                    }
+                },
+                "type": "object"
+            },
+            "Product": {
+                "title": "Product",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "Descricao do produto",
+                        "format": "string",
+                        "example": "Galao de tinta"
+                    },
+                    "color": {
+                        "title": "color",
+                        "description": "Cor do produto",
+                        "format": "string",
+                        "example": "Azul"
+                    },
+                    "dimensions": {
+                        "title": "dimensions",
+                        "description": "Dimensoes do produto",
+                        "format": "string",
+                        "example": "5 litros"
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "Preco do produto",
+                        "format": "string",
+                        "example": "20"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Faça login com email e senha para obter seu token.",
+                "name": "Token",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
